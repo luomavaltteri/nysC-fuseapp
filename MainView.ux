@@ -1,0 +1,11 @@
+<App Background="#FFFFFF">
+  <iOS.StatusBarConfig Style="Light" />
+  <Android.StatusBarConfig Color="#FFFFFF" />
+  <Router ux:Name="router" />
+
+  <ClientPanel>
+    <Navigator DefaultPath="dashboard">
+      <DashboardPage ux:Template="dashboard" router="router" />
+    </Navigator>
+  </ClientPanel>
+</App>

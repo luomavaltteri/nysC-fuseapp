@@ -1,0 +1,22 @@
+<Page ux:Class="DashboardPage">
+  <Router ux:Dependency="router" />
+  <JavaScript File="DashboardPage.js" />
+
+  <DockPanel>
+    <Grid RowCount="3">
+      <StackPanel Alignment="VerticalCenter">
+        <Text Alignment="HorizontalCenter">Time</Text>
+        <Text Alignment="HorizontalCenter" Value="Date" />
+      </StackPanel>
+      <ScrollView>
+        <StackPanel Alignment="VerticalCenter">
+          <Each Items="{list}">
+            <Text Alignment="HorizontalCenter" Value="{lineName}" />
+            <Text Alignment="HorizontalCenter" Value="{arrivalTime}" />
+          </Each>
+        </StackPanel>
+      </ScrollView>
+      <Button Text="Get Started" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}"/>
+    </Grid>
+  </DockPanel>
+</Page>

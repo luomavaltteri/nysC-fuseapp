@@ -3,7 +3,7 @@
   <JavaScript File="DashboardPage.js" />
 
   <DockPanel>
-    <Grid RowCount="3">
+    <Grid RowCount="3" Rows="1*,4*,1*,1*">
       <StackPanel Alignment="VerticalCenter">
         <Text Alignment="HorizontalCenter">Time</Text>
         <Text Alignment="HorizontalCenter" Value="Date" />
@@ -11,12 +11,33 @@
       <ScrollView>
         <StackPanel Alignment="VerticalCenter">
           <Each Items="{list}">
-            <Text Alignment="HorizontalCenter" Value="{lineName}" />
-            <Text Alignment="HorizontalCenter" Value="{arrivalTime}" />
+            <Panel Margin="10" Padding="2,4,6,8" Color="White">
+              <Grid RowCount="1" ColumnCount="3">
+                <Text Alignment="HorizontalCenter" Value="{lineName}" />
+                <Text Alignment="HorizontalCenter" Value="{arrivalTime}" />
+                <Text Alignment="HorizontalCenter" Value="{dayTypes}" />
+              </Grid>
+            </Panel>
           </Each>
         </StackPanel>
       </ScrollView>
-      <Button Text="Get Started" Margin="50,0" Alignment="VerticalCenter" Clicked="{goToHomePage}"/>
+      <Panel>
+        <TextInput ux:Name="stopNumber" Value="{stopNumber}" PlaceholderText="Stop number" PlaceholderColor="#ccc" Height="50" Padding="5" >
+            <Rectangle Layer="Background">
+                <Stroke Width="2" Brush="#BBB" />
+            </Rectangle>
+        </TextInput>
+      </Panel>
+      <Panel>
+        <Grid RowCount="1" ColumnCount="2">
+          <Button Alignment="Center" Text="Clear" Margin="5">
+            <Clicked>
+              <Set stopNumber.Value="" />
+            </Clicked>
+          </Button>
+          <Button Text="Get Started" Margin="50,0" Alignment="Center" Clicked="{goToHomePage}" />
+        </Grid>
+      </Panel>
     </Grid>
   </DockPanel>
 </Page>

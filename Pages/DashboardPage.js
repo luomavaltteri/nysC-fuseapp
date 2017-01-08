@@ -1,12 +1,17 @@
 var Context = require("Modules/Context");
+var Observable = require("FuseJS/Observable");
+
+var stopNumber = Observable();
 
 function goToHomePage() {
-  Context.provideInfo();
+  Context.provideInfo(stopNumber.value);
 }
 
 
 module.exports = {
-  list: Context.info._values,
+  list: Context.info,
+
+  stopNumber: stopNumber,
 
   goToHomePage: goToHomePage
 };

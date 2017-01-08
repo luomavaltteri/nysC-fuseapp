@@ -1,7 +1,7 @@
 var Observable = require("FuseJS/Observable");
 var Backend = require("./Backend");
 
-var stopNum = '0001';
+//var stopNum = '3523';
 var info = Observable();
 
 function handleCalls(data, stopNum){
@@ -11,7 +11,7 @@ function handleCalls(data, stopNum){
     if(data.calls[i].stopPoint.shortName == stopNum){
       stopInfo.arrivalTime = data.calls[i].arrivalTime;
       stopInfo.lineName = data.headSign;
-      stopInfo.dayTypes = data.dayTypes;
+      stopInfo.dayTypes = data.dayTypes[0];
       break;
     }
   }
@@ -34,13 +34,13 @@ function getSchedule(data, stopNum){
   return returnInfo;
 }
 
-function provideInfo() {
+function provideInfo(stopInput) {
   console.log("provideInfo");
-  Backend.getJourneys(stopNum)
+  Backend.getJourneys(stopInput)
     .then(function(newInfo) {
-      console.log("then newInfo");
-      //console.log(JSON.stringify((getSchedule(newInfo, stopNum))[0]));
-      info.replaceAll(getSchedule(newInfo, stopNum));
+      console.log("then newInfo from " + stopInput);
+      console.log(JSON.stringify((getSchedule(newInfo, stopInput))[0]));
+      info.replaceAll(getSchedule(newInfo, stopInput));
     })
     .catch(function(error) {
       console.log("Couldn't get info: " + error);
